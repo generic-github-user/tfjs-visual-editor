@@ -6,9 +6,11 @@
 #editor {
       width: 100vw;
       height: 80vh;
+      background-color: #EEE;
 }
 #taskbar {
       width: 100vw;
       height: 20vh;
-      background-color: black;
+      background-color: #FFF;
+      box-shadow: 20px 5px 25px 15px grey;
 }
