@@ -1,0 +1,14 @@
+* {
+      margin: 0;
+      padding: 0;
+}
+
+#editor {
+      width: 100vw;
+      height: 80vh;
+}
+#taskbar {
+      width: 100vw;
+      height: 20vh;
+      background-color: black;
+}
