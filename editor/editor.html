@@ -16,20 +16,32 @@
 
                   <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="add-menu">
                         <li class="mdl-menu__item mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" id="add-menu-tensors">Tensors</li>
-                        <li class="mdl-menu__item" onclick="">Models</li>
-                        <li class="mdl-menu__item" onclick="">Layers</li>
-                        <li class="mdl-menu__item" onclick="">Operations</li>
-                        <li class="mdl-menu__item" onclick="">Training</li>
+                        <li class="mdl-menu__item mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" id="add-menu-models">Models</li>
+                        <li class="mdl-menu__item mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" id="add-menu-layers">Layers</li>
+                        <li class="mdl-menu__item mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" id="add-menu-operations">Operations</li>
+                        <li class="mdl-menu__item mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" id="add-menu-training">Training</li>
                   </ul>
 
                   <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="add-menu-tensors">
                         <li class="mdl-menu__item" onclick="add(tensors.tensor)">Tensor</li>
                         <li class="mdl-menu__item" onclick="add(tensors.scalar)">Scalar</li>
-                        <li class="mdl-menu__item" onclick="add(tensors.tensor1d)">Tensor1d</li>
-                        <li class="mdl-menu__item" onclick="add(tensors.tensor2d)">Tensor2d</li>
-                        <li class="mdl-menu__item" onclick="add(tensors.tensor3d)">Tensor3d</li>
-                        <li class="mdl-menu__item" onclick="add(tensors.tensor4d)">Tensor4d</li>
-                        <li class="mdl-menu__item" onclick="add(tensors.tensor5d)">Tensor5d</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.tensor1d)">Tensor1D</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.tensor2d)">Tensor2D</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.tensor3d)">Tensor3D</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.tensor4d)">Tensor4D</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.tensor5d)">Tensor5D</li>
+                  </ul>
+
+                  <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="add-menu-models">
+                        <li class="mdl-menu__item" onclick="add(tensors.sequential)">Sequential</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.model)">Model</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.input)">Input</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.loadModel)">Load Model</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.copyModel)">Copy Model</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.listModels)">List Models</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.moveModel)">Move Model</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.removeModel)">Remove Model</li>
+                  </ul>
                   </ul>
             </div>
             <div id="taskbar">
