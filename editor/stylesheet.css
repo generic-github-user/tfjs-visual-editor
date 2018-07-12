@@ -12,5 +12,11 @@
       width: 100vw;
       height: 20vh;
       background-color: #FFF;
-      box-shadow: 20px 5px 25px 15px grey;
+      box-shadow: 25px 5px 25px 15px grey;
+      transition: background-color 0.5s ease, box-shadow 1s ease;
+}
+#taskbar:hover {
+      background-color: #EEE;
+      box-shadow: 50px -5px 25px 15px grey;
+      transition: background-color 0.5s ease, box-shadow 1s ease;
 }
