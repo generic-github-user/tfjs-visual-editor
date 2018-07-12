@@ -7,6 +7,11 @@
       width: 100vw;
       height: 80vh;
       background-color: #EEE;
+      transition: background-color 1s ease;
+}
+#editor:hover {
+      background-color: #FFF;
+      transition: background-color 1s ease;
 }
 #taskbar {
       width: 100vw;
