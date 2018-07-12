@@ -17,6 +17,12 @@
 }
 #taskbar:hover {
       background-color: #FFF;
-      box-shadow: 50px -5px 25px 15px grey;
+      box-shadow: 40px -5px 20px 15px grey;
       transition: background-color 1s ease, box-shadow 1.5s ease;
+      /* animation: shadow-hover 1s ease-in-out; */
 }
+/* @keyframes shadow-hover {
+      0% { box-shadow: 25px 5px 25px 15px grey; }
+      50% { box-shadow: 60px -7px 25px 15px grey; }
+      100% { box-shadow: 50px -5px 25px 15px grey; }
+} */
