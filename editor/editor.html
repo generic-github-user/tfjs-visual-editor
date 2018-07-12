@@ -15,11 +15,21 @@
                   </button>
 
                   <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="add-menu">
-                        <li class="mdl-menu__item">Tensors</li>
-                        <li class="mdl-menu__item">Models</li>
-                        <li class="mdl-menu__item">Layers</li>
-                        <li class="mdl-menu__item">Operations</li>
-                        <li class="mdl-menu__item">Training</li>
+                        <li class="mdl-menu__item mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" id="add-menu-tensors">Tensors</li>
+                        <li class="mdl-menu__item" onclick="">Models</li>
+                        <li class="mdl-menu__item" onclick="">Layers</li>
+                        <li class="mdl-menu__item" onclick="">Operations</li>
+                        <li class="mdl-menu__item" onclick="">Training</li>
+                  </ul>
+
+                  <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="add-menu-tensors">
+                        <li class="mdl-menu__item" onclick="add(tensors.tensor)">Tensor</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.scalar)">Scalar</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.tensor1d)">Tensor1d</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.tensor2d)">Tensor2d</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.tensor3d)">Tensor3d</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.tensor4d)">Tensor4d</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.tensor5d)">Tensor5d</li>
                   </ul>
             </div>
             <div id="taskbar">
