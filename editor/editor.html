@@ -20,6 +20,17 @@
                         <li class="mdl-menu__item mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" id="add-menu-layers">Layers</li>
                         <li class="mdl-menu__item mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" id="add-menu-operations">Operations</li>
                         <li class="mdl-menu__item mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" id="add-menu-training">Training</li>
+                        <li class="mdl-menu__item mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" id="add-menu-native">Native</li>
+                  </ul>
+
+                  <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="add-menu-tensors">
+                        <li class="mdl-menu__item" onclick="add(tensors.tensor)">Tensor</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.scalar)">Scalar</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.tensor1d)">Tensor1D</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.tensor2d)">Tensor2D</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.tensor3d)">Tensor3D</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.tensor4d)">Tensor4D</li>
+                        <li class="mdl-menu__item" onclick="add(tensors.tensor5d)">Tensor5D</li>
                   </ul>
 
                   <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="add-menu-layers">
@@ -57,14 +68,19 @@
                         <li class="mdl-menu__item mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" id="add-menu-training-losses">Losses</li>
                   </ul>
 
-                  <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="add-menu-tensors">
-                        <li class="mdl-menu__item" onclick="add(tensors.tensor)">Tensor</li>
-                        <li class="mdl-menu__item" onclick="add(tensors.scalar)">Scalar</li>
-                        <li class="mdl-menu__item" onclick="add(tensors.tensor1d)">Tensor1D</li>
-                        <li class="mdl-menu__item" onclick="add(tensors.tensor2d)">Tensor2D</li>
-                        <li class="mdl-menu__item" onclick="add(tensors.tensor3d)">Tensor3D</li>
-                        <li class="mdl-menu__item" onclick="add(tensors.tensor4d)">Tensor4D</li>
-                        <li class="mdl-menu__item" onclick="add(tensors.tensor5d)">Tensor5D</li>
+                  <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="add-menu-native">
+                        <li class="mdl-menu__item mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" id="add-menu-native-logic">Logic</li>
+                        <li class="mdl-menu__item mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" id="add-menu-native-logging">Gradients</li>
+                  </ul>
+
+                  <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="add-menu-native-logic">
+                        <li class="mdl-menu__item mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" id="add-menu-native-logic-conditional">Conditional</li>
+                        <li class="mdl-menu__item mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect" id="add-menu-native-logic-loops">Loops</li>
+                  </ul>
+
+                  <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="add-menu-native-logic-loops">
+                        <li class="mdl-menu__item">For</li>
+                        <li class="mdl-menu__item">While</li>
                   </ul>
 
                   <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="add-menu-models">
