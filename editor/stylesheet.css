@@ -7,13 +7,13 @@
 }
 .node {
       position: absolute;
-      background-color: #FFF;
-      box-shadow: 5px 5px 10px 0px gray;
+      background-color: #EEE;
+      box-shadow: 3px 3px 15px 5px gray;
       transition: background-color 0.5s ease, box-shadow 1s ease;
 }
 .node:hover {
       background-color: #FFF;
-      box-shadow: 10px 10px 15px 0px gray;
+      box-shadow: 7px 7px 20px 5px gray;
       transition: background-color 1s ease, box-shadow 0.5s ease;
 }
 

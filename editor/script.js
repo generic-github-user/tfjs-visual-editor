@@ -44,17 +44,27 @@ function add(node) {
                         "width": 400,
                         "height": 200
                   }
+            },
+            "elements": {
+                  "main": document.createElement("div"),
+                  "title": document.createElement("h4")
             }
       };
       do {
             newNode.id = uuid();
-      } while (nodeList.find(x => x.id == newNode.id))
+      } while (nodeList.find(x => x.id == newNode.id) !== undefined)
 
+      const main = newNode.elements.main;
+      main.className = "node";
+      main.style.width = newNode.display.dimensions.width + "px";
+      main.style.height = newNode.display.dimensions.height + "px";
+      main.style.left = newNode.display.position.x + "px";
+      main.style.top = newNode.display.position.y + "px";
+      main.style.id = newNode.id;
 
-      nodeHTML = "<div class='node' style='width:" + newNode.display.dimensions.width + "; height:" + newNode.display.dimensions.height + ";'>";
-      nodeHTML += "<h4>" + node.title + "</h4>";
-      nodeHTML += "</div>";
-      document.querySelector("#editor").innerHTML += nodeHTML;
+      newNode.elements.title.innerText = newNode.title;
+      main.appendChild(newNode.elements.title);
 
       nodeList.push(newNode);
+      document.querySelector("#editor").appendChild(main);
 }
