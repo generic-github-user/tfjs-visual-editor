@@ -18,14 +18,23 @@ const nodes = {
 const nodeList = [
 
 ];
+function uuid() {
+      function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+      }
+      return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
 
 var newNode;
 var nodeHTML;
-const add = function (node) {
+function add(node) {
       newNode = {
             "title": node.title,
             "name": "",
             "description": "",
+            "id": uuid(),
             "display": {
                   "position": {
                         "x": 200,
@@ -37,6 +46,9 @@ const add = function (node) {
                   }
             }
       };
+      do {
+            newNode.id = uuid();
+      } while (nodeList.find(x => x.id == newNode.id))
 
 
       nodeHTML = "<div class='node' style='width:" + newNode.display.dimensions.width + "; height:" + newNode.display.dimensions.height + ";'>";
