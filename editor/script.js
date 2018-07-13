@@ -18,7 +18,8 @@ const dataTypes = [
       },
       {
             "dataType": "number",
-            "name": "Number"
+            "name": "Number",
+            "color": "#00F"
       },
       {
             "dataType": "boolean",
@@ -120,12 +121,13 @@ function clone(object) {
 
 var newNode;
 var nodeHTML;
+var color;
 function add(node) {
       newNode = {
             "node": node,
             "name": "",
             "description": "",
-            "data": clone(node.data),
+            "dataSources": [],
             "id": uuid(),
             "display": {
                   "position": {
@@ -167,6 +169,18 @@ function add(node) {
                   Documentation\
             </div>\
       ";
+      newNode.node.data.inputs.forEach(
+            (input) => {
+                  color = dataTypes.find(x => x.dataType == input.dataTypes[0]).color;
+                  main.innerHTML += "<div class='node-data' style='background-color:" + color + ";'></div>";
+            }
+      );
+      newNode.node.data.outputs.forEach(
+            (output) => {
+                  color = dataTypes.find(x => x.dataType == output.dataTypes[0]).color;
+                  main.innerHTML += "<div class='node-data' style='background-color:" + color + ";'></div>";
+            }
+      );
 
       nodeList.push(newNode);
       document.querySelector("#editor").appendChild(main);
