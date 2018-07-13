@@ -47,9 +47,7 @@ function add(node) {
             },
             "elements": {
                   "main": document.createElement("div"),
-                  "title": document.createElement("h4"),
-                  "information": document.createElement("button"),
-                  "informationIcon": document.createElement("i")
+                  "title": document.createElement("h4")
             }
       };
       do {
@@ -67,11 +65,16 @@ function add(node) {
       newNode.elements.title.innerText = newNode.node.title;
       main.appendChild(newNode.elements.title);
 
-      newNode.elements.information.className = "mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-js-ripple-effect mdl-card__menu";
-      newNode.elements.informationIcon.innerText = "info";
-      newNode.elements.informationIcon.className = "material-icons";
-      newNode.elements.information.appendChild(newNode.elements.informationIcon);
-      main.appendChild(newNode.elements.information)
+      main.innerHTML += "\
+            <a href='" + newNode.node.information + "' target='_blank'>\
+                  <button class='mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-js-ripple-effect mdl-card__menu' id='" + "info-" + newNode.id + "'>\
+                        <i class='material-icons'>info</i>\
+                  </button>\
+            </a>\
+            <div class='mdl-tooltip' for='" + "info-" + newNode.id + "'>\
+                  Documentation\
+            </div>\
+      ";
 
       nodeList.push(newNode);
       document.querySelector("#editor").appendChild(main);
