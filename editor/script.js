@@ -31,7 +31,7 @@ var newNode;
 var nodeHTML;
 function add(node) {
       newNode = {
-            "title": node.title,
+            "node": node,
             "name": "",
             "description": "",
             "id": uuid(),
@@ -47,7 +47,9 @@ function add(node) {
             },
             "elements": {
                   "main": document.createElement("div"),
-                  "title": document.createElement("h4")
+                  "title": document.createElement("h4"),
+                  "information": document.createElement("button"),
+                  "informationIcon": document.createElement("i")
             }
       };
       do {
@@ -62,8 +64,14 @@ function add(node) {
       main.style.top = newNode.display.position.y + "px";
       main.style.id = newNode.id;
 
-      newNode.elements.title.innerText = newNode.title;
+      newNode.elements.title.innerText = newNode.node.title;
       main.appendChild(newNode.elements.title);
+
+      newNode.elements.information.className = "mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-js-ripple-effect mdl-card__menu";
+      newNode.elements.informationIcon.innerText = "info";
+      newNode.elements.informationIcon.className = "material-icons";
+      newNode.elements.information.appendChild(newNode.elements.informationIcon);
+      main.appendChild(newNode.elements.information)
 
       nodeList.push(newNode);
       document.querySelector("#editor").appendChild(main);
