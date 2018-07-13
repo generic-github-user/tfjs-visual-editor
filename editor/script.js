@@ -1,15 +1,103 @@
 
 console.log("script.js loaded.");
 
+const dataTypes = [
+      {
+            "dataType": "array",
+            "name": "Array",
+            "color": "#0F0"
+      },
+      {
+            "dataType": "string",
+            "name": "String",
+            "color": "#F00"
+      },
+      {
+            "dataType": "tensor",
+            "name": "Tensor"
+      },
+      {
+            "dataType": "number",
+            "name": "Number"
+      },
+      {
+            "dataType": "boolean",
+            "name": "Boolean"
+      },
+      {
+            "dataType": "scalar",
+            "name": "Scalar"
+      }
+];
 const nodes = {
       "tensors": {
             "tensor": {
                   // We could get the title from the HTML menu, but that would be somewhat messy
                   "title": "Tensor",
+                  "data": {
+                        "inputs": [
+                              {
+                                    "parameterName": "Values",
+                                    "dataTypes": [
+                                          "array"
+                                    ],
+                                    "optional": false
+                              },
+                              {
+                                    "parameterName": "Shape",
+                                    "dataTypes": [
+                                          "array"
+                                    ],
+                                    "optional": true
+                              },
+                              {
+                                    "parameterName": "Data type",
+                                    "dataTypes": [
+                                          "string"
+                                    ],
+                                    "optional": true
+                              }
+                        ],
+                        "outputs": [
+                              {
+                                    "outputName": "Output",
+                                    "dataTypes": [
+                                          "tensor"
+                                    ]
+                              }
+                        ]
+                  },
                   "information": "https://js.tensorflow.org/api/latest/index.html#tensor"
             },
             "scalar": {
                   "title": "Scalar",
+                  "data": {
+                        "inputs": [
+                              {
+                                    "parameterName": "Value",
+                                    "dataTypes": [
+                                          "number",
+                                          "boolean"
+                                    ],
+                                    "optional": false
+                              },
+                              {
+                                    "parameterName": "Data type",
+                                    "dataTypes": [
+                                          "string"
+                                    ],
+                                    "optional": true
+                              }
+                        ],
+                        "outputs": [
+                              {
+                                    "outputName": "Output",
+                                    "dataTypes": [
+                                          "scalar"
+                                    ]
+                              }
+                        ]
+                  },
                   "information": "https://js.tensorflow.org/api/latest/index.html#scalar"
             }
       }
@@ -26,6 +114,9 @@ function uuid() {
       }
       return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 }
+function clone(object) {
+      return JSON.parse(JSON.stringify(object));
+}
 
 var newNode;
 var nodeHTML;
@@ -34,6 +125,7 @@ function add(node) {
             "node": node,
             "name": "",
             "description": "",
+            "data": clone(node.data),
             "id": uuid(),
             "display": {
                   "position": {
