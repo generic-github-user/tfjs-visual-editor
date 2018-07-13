@@ -6,10 +6,15 @@
       color: #FFF;
 }
 .node {
-      width: 400px;
-      height: 200px;
       position: absolute;
+      background-color: #FFF;
       box-shadow: 5px 5px 10px 0px gray;
+      transition: background-color 0.5s ease, box-shadow 1s ease;
+}
+.node:hover {
+      background-color: #FFF;
+      box-shadow: 10px 10px 15px 0px gray;
+      transition: background-color 1s ease, box-shadow 0.5s ease;
 }
 
 #editor {
@@ -27,12 +32,12 @@
       height: 20vh;
       background-color: #EEE;
       box-shadow: 25px 5px 25px 15px grey;
-      transition: background-color 1s ease, box-shadow 1.5s ease;
+      transition: background-color 0.5s ease, box-shadow 1s ease;
 }
 #taskbar:hover {
       background-color: #FFF;
       box-shadow: 40px -5px 20px 15px grey;
-      transition: background-color 1s ease, box-shadow 1.5s ease;
+      transition: background-color 1s ease, box-shadow 0.5s ease;
       /* animation: shadow-hover 1s ease-in-out; */
 }
 /* @keyframes shadow-hover {
