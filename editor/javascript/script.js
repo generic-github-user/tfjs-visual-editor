@@ -1,4 +1,4 @@
-const nodeList = [
+var nodeList = [
 
 ];
 function UUID() {
@@ -11,6 +11,11 @@ function UUID() {
 }
 function clone(object) {
       return JSON.parse(JSON.stringify(object));
+}
+
+const savedData = localStorage.getItem("tfjs-visual-editor");
+if (savedData) {
+      nodeList = JSON.parse(savedData);
 }
 
 var newNode;
@@ -83,6 +88,11 @@ function add(node) {
 
       nodeList.push(newNode);
       document.querySelector("#editor").appendChild(main);
+
+      console.log("Saving editor data to browser localStorage . . .");
+      localStorage.setItem("tfjs-visual-editor", JSON.stringify(nodeList));
+      console.log("Editor data saved:");
+      console.log(nodeList);
 }
 
 console.log("Main editor script loaded. (script.js)");
