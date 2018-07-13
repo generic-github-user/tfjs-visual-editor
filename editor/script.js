@@ -107,7 +107,7 @@ const nodes = {
 const nodeList = [
 
 ];
-function uuid() {
+function UUID() {
       function s4() {
             return Math.floor((1 + Math.random()) * 0x10000)
             .toString(16)
@@ -123,12 +123,17 @@ var newNode;
 var nodeHTML;
 var color;
 function add(node) {
+      if (!node) {
+            alert("Sorry, but this node is not currently supported. It will be soon!");
+      }
+      document.querySelector("#editor").innerHTML = "";
+
       newNode = {
             "node": node,
             "name": "",
             "description": "",
             "dataSources": [],
-            "id": uuid(),
+            "id": UUID(),
             "display": {
                   "position": {
                         "x": 200,
@@ -145,7 +150,7 @@ function add(node) {
             }
       };
       do {
-            newNode.id = uuid();
+            newNode.id = UUID();
       } while (nodeList.find(x => x.id == newNode.id) !== undefined)
 
       const main = newNode.elements.main;
