@@ -1,6 +1,3 @@
-
-console.log("script.js loaded.");
-
 const dataTypes = [
       {
             "dataType": "array",
@@ -190,3 +187,5 @@ function add(node) {
       nodeList.push(newNode);
       document.querySelector("#editor").appendChild(main);
 }
+
+console.log("Main editor script loaded. (script.js)");
