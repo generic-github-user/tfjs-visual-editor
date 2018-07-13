@@ -5,6 +5,12 @@
 .material-icons {
       color: #FFF;
 }
+.node {
+      width: 400px;
+      height: 200px;
+      position: absolute;
+      box-shadow: 5px 5px 10px 0px gray;
+}
 
 #editor {
       width: 100vw;
