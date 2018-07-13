@@ -31,16 +31,23 @@
       box-shadow: 4px 4px 4px 2px gray;
       transition: box-shadow 0.5s ease;
 }
+.center {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+}
 
 #editor {
       width: 100vw;
       height: 80vh;
+      text-align: center;
+
       background-color: #EEE;
       transition: background-color 1s ease;
 }
 #editor:hover {
       background-color: #FFF;
-      transition: background-color 1s ease;
+      transition: background-color 0.5s ease;
 }
 #taskbar {
       width: 100vw;
@@ -61,6 +68,19 @@
       100% { box-shadow: 50px -5px 25px 15px grey; }
 } */
 #add-menu {
-      margin: 1%;
+      margin: 2%;
+
       box-shadow: 5px 5px 10px 0px gray;
+}
+#welcome {
+      margin: 0;
+
+      color: #000;
+      text-shadow: 3px 3px 5px gray;
+      transition: color 5s ease, text-shadow 1s ease;
+}
+#welcome:hover {
+      color: #CCC;
+      text-shadow: 10px 10px 10px gray;
+      transition: color 10s ease, text-shadow 0.5s ease;
 }
