@@ -13,6 +13,14 @@ function clone(object) {
       return JSON.parse(JSON.stringify(object));
 }
 
+const savedData = localStorage.getItem("tfjs-visual-editor");
+if (savedData) {
+      nodeList = JSON.parse(savedData);
+      nodeList.forEach(
+            (node) => addNode(node)
+      );
+}
+
 var newNode;
 function getNodeInfo(nodeType) {
       if (!nodeType) {
@@ -56,26 +64,6 @@ function addNode(node) {
       document.querySelector("#editor").innerHTML = "";
 
       const main = node.elements.main;
-      main.className = "node";
-      main.style.width = node.display.dimensions.width + "px";
-      main.style.height = node.display.dimensions.height + "px";
-      main.style.left = node.display.position.x + "px";
-      main.style.top = node.display.position.y + "px";
-      main.style.id = node.id;
-
-      node.elements.title.innerText = node.node.title;
-      main.appendChild(node.elements.title);
-
-      main.innerHTML += "\
-            <a href='" + node.node.info + "' target='_blank'>\
-                  <button class='mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-js-ripple-effect mdl-card__menu' id='" + "info-" + node.id + "'>\
-                        <i class='material-icons'>info</i>\
-                  </button>\
-            </a>\
-            <div class='mdl-tooltip' for='" + "info-" + node.id + "'>\
-                  Documentation\
-            </div>\
-      ";
       node.node.data.inputs.forEach(
             (input) => {
                   color = dataTypes.find(x => x.dataType == input.dataTypes[0]).color;
@@ -89,8 +77,32 @@ function addNode(node) {
             }
       );
 
+      const style = "style='\
+            width: " + node.display.dimensions.width + "px; \
+            height: " + node.display.dimensions.height + "px; \
+            left: " + node.display.position.x + "px; \
+            top: " + node.display.position.y + "px;\
+      ";
+      document.querySelector("#editor").innerHTML += "\
+            <div class='node' " + style + " id=" + node.id + ">\
+                  <h4>node.node.title</h4>\
+                  <a href='" + node.node.info + "' target='_blank'>\
+                        <button class='mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-js-ripple-effect mdl-card__menu' id='" + "info-" + node.id + "'>\
+                              <i class='material-icons'>info</i>\
+                        </button>\
+                  </a>\
+                  <div class='mdl-tooltip' for='" + "info-" + node.id + "'>\
+                        Documentation\
+                  </div>\
+            </div>\
+      ";
+
       nodeList.push(node);
-      document.querySelector("#editor").appendChild(main);
+
+      console.log("Saving editor data to browser localStorage . . .");
+      localStorage.setItem("tfjs-visual-editor", JSON.stringify(nodeList));
+      console.log("Editor data saved:");
+      console.log(nodeList);
 }
 
 console.log("Main editor script loaded. (script.js)");
