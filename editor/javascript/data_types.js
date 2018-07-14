@@ -11,7 +11,8 @@ const dataTypes = [
       },
       {
             "dataType": "tensor",
-            "name": "Tensor"
+            "name": "Tensor",
+            "color": "#FFA500"
       },
       {
             "dataType": "number",
@@ -20,11 +21,13 @@ const dataTypes = [
       },
       {
             "dataType": "boolean",
-            "name": "Boolean"
+            "name": "Boolean",
+            "color": "#9800FF"
       },
       {
             "dataType": "scalar",
-            "name": "Scalar"
+            "name": "Scalar",
+            "color": "#FFC64C"
       }
 ];
 
