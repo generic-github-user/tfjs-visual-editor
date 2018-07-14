@@ -8,17 +8,18 @@ function update() {
       nodeList.forEach(
             function (node) {
                   if (!document.getElementById(node.id)) {
-                        const main = node.elements.main;
+                        var inputs = "";
                         node.node.data.inputs.forEach(
                               (input) => {
                                     color = dataTypes.find(x => x.dataType == input.dataTypes[0]).color;
-                                    main.innerHTML += "<div class='node-data' style='background-color:" + color + ";'></div>";
+                                    inputs += "<div class='node-data' style='background-color:" + color + ";'></div>";
                               }
                         );
+                        var outputs = "";
                         node.node.data.outputs.forEach(
                               (output) => {
                                     color = dataTypes.find(x => x.dataType == output.dataTypes[0]).color;
-                                    main.innerHTML += "<div class='node-data' style='background-color:" + color + ";'></div>";
+                                    outputs += "<div class='node-data' style='background-color:" + color + ";'></div>";
                               }
                         );
 
@@ -28,9 +29,15 @@ function update() {
                               left: " + node.display.position.x + "px; \
                               top: " + node.display.position.y + "px;\
                         ";
-                        document.querySelector("#editor").innerHTML += "\
+
+                        node.element = "";
+                        node.element += "\
                               <div class='node' " + style + " id='" + node.id + "'>\
                                     <h4>" + node.node.title + "</h4>\
+                        ";
+                        node.element += inputs;
+                        node.element += outputs;
+                        node.element += "\
                                     <a href='" + node.node.info + "' target='_blank' class='mdl-card__menu' id='" + "info-" + node.id + "'>\
                                           <button class='mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-js-ripple-effect'>\
                                                 <i class='material-icons'>info</i>\
@@ -41,6 +48,8 @@ function update() {
                                     </div>\
                               </div>\
                         ";
+                        document.querySelector("#editor").innerHTML += node.element;
+                        console.log(node.element)
                   }
             }
       );
@@ -92,10 +101,7 @@ function getNodeInfo(nodeType) {
                               "height": 200
                         }
                   },
-                  "elements": {
-                        "main": document.createElement("div"),
-                        "title": document.createElement("h4")
-                  }
+                  "element": ""
             };
 
             do {
