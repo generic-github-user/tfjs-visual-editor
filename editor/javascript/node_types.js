@@ -72,4 +72,4 @@ const nodes = {
       }
 }
 
-console.log("Node types loaded. (node_types.js)")
+console.log("Node types loaded. (node_types.js)");

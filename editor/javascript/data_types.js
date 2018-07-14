@@ -28,4 +28,4 @@ const dataTypes = [
       }
 ];
 
-console.log("Data types loaded. (data_types.js)")
+console.log("Data types loaded. (data_types.js)");
