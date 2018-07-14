@@ -23,33 +23,29 @@ function update() {
                               }
                         );
 
-                        const style = "style='\
-                              width: " + node.display.dimensions.width + "px; \
-                              height: " + node.display.dimensions.height + "px; \
-                              left: " + node.display.position.x + "px; \
-                              top: " + node.display.position.y + "px;\
-                        ";
+const style = 'style="\
+width: ' + node.display.dimensions.width + 'px; \
+height: ' + node.display.dimensions.height + 'px; \
+left: ' + node.display.position.x + 'px; \
+top: ' + node.display.position.y + 'px;\
+"';
 
-                        node.element = "";
-                        node.element += "\
-                              <div class='node' " + style + " id='" + node.id + "'>\
-                                    <h4>" + node.node.title + "</h4>\
-                        ";
-                        node.element += inputs;
-                        node.element += outputs;
-                        node.element += "\
-                                    <a href='" + node.node.info + "' target='_blank' class='mdl-card__menu' id='" + "info-" + node.id + "'>\
-                                          <button class='mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-js-ripple-effect'>\
-                                                <i class='material-icons'>info</i>\
-                                          </button>\
-                                    </a>\
-                                    <div class='mdl-tooltip' for='" + "info-" + node.id + "'>\
-                                          Documentation\
-                                    </div>\
-                              </div>\
-                        ";
+node.element = '\
+<div class="node" ' + style + ' id="' + node.id + '">\
+<h4>' + node.node.title + '</h4>\
+' + inputs + '\
+' + outputs + '\
+<a href="' + node.node.info + '" target="_blank" class="mdl-card__menu" id="' + 'info-' + node.id + '">\
+<button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-js-ripple-effect">\
+<i class="material-icons">info</i>\
+</button>\
+</a>\
+<div class="mdl-tooltip" for="' + 'info-' + node.id + '">\
+Documentation\
+</div>\
+</div>';
+
                         document.querySelector("#editor").innerHTML += node.element;
-                        console.log(node.element)
                   }
             }
       );
