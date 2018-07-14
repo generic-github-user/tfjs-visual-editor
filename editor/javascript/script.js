@@ -16,7 +16,7 @@ function clone(object) {
 var newNode;
 var nodeHTML;
 var color;
-function add(node) {
+function addNode(node) {
       if (!node) {
             alert("Sorry, but this node is not currently supported. It will be soon!");
       }
