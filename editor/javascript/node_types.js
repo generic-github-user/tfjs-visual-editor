@@ -36,7 +36,7 @@ const nodes = {
                               }
                         ]
                   },
-                  "information": "https://js.tensorflow.org/api/latest/index.html#tensor"
+                  "info": "https://js.tensorflow.org/api/latest/index.html#tensor"
             },
             "scalar": {
                   "title": "Scalar",
@@ -67,7 +67,7 @@ const nodes = {
                               }
                         ]
                   },
-                  "information": "https://js.tensorflow.org/api/latest/index.html#scalar"
+                  "info": "https://js.tensorflow.org/api/latest/index.html#scalar"
             }
       }
 }

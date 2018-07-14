@@ -1,4 +1,4 @@
-const nodeList = [
+var nodeList = [
 
 ];
 function UUID() {
@@ -14,74 +14,82 @@ function clone(object) {
 }
 
 var newNode;
-var nodeHTML;
+function getNodeInfo(nodeType) {
+      if (!nodeType) {
+            console.error("Sorry, but this node is not currently supported. It will be soon!");
+            return false;
+      }
+      else {
+            newNode = {
+                  "node": nodeType,
+                  "name": "",
+                  "description": "",
+                  "dataSources": [],
+                  "id": UUID(),
+                  "display": {
+                        "position": {
+                              "x": 200,
+                              "y": 200
+                        },
+                        "dimensions": {
+                              "width": 400,
+                              "height": 200
+                        }
+                  },
+                  "elements": {
+                        "main": document.createElement("div"),
+                        "title": document.createElement("h4")
+                  }
+            };
+
+            do {
+                  newNode.id = UUID();
+            }
+            while (nodeList.find(x => x.id == newNode.id) !== undefined)
+
+            return newNode;
+      }
+}
+
 var color;
 function addNode(node) {
-      if (!node) {
-            alert("Sorry, but this node is not currently supported. It will be soon!");
-      }
       document.querySelector("#editor").innerHTML = "";
 
-      newNode = {
-            "node": node,
-            "name": "",
-            "description": "",
-            "dataSources": [],
-            "id": UUID(),
-            "display": {
-                  "position": {
-                        "x": 200,
-                        "y": 200
-                  },
-                  "dimensions": {
-                        "width": 400,
-                        "height": 200
-                  }
-            },
-            "elements": {
-                  "main": document.createElement("div"),
-                  "title": document.createElement("h4")
-            }
-      };
-      do {
-            newNode.id = UUID();
-      } while (nodeList.find(x => x.id == newNode.id) !== undefined)
-
-      const main = newNode.elements.main;
+      const main = node.elements.main;
       main.className = "node";
-      main.style.width = newNode.display.dimensions.width + "px";
-      main.style.height = newNode.display.dimensions.height + "px";
-      main.style.left = newNode.display.position.x + "px";
-      main.style.top = newNode.display.position.y + "px";
-      main.style.id = newNode.id;
+      main.style.width = node.display.dimensions.width + "px";
+      main.style.height = node.display.dimensions.height + "px";
+      main.style.left = node.display.position.x + "px";
+      main.style.top = node.display.position.y + "px";
+      main.style.id = node.id;
 
-      newNode.elements.title.innerText = newNode.node.title;
-      main.appendChild(newNode.elements.title);
+      node.elements.title.innerText = node.node.title;
+      main.appendChild(node.elements.title);
 
       main.innerHTML += "\
-            <a href='" + newNode.node.information + "' target='_blank'>\
-                  <button class='mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-js-ripple-effect mdl-card__menu' id='" + "info-" + newNode.id + "'>\
+            <a href='" + node.node.info + "' target='_blank'>\
+                  <button class='mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-js-ripple-effect mdl-card__menu' id='" + "info-" + node.id + "'>\
                         <i class='material-icons'>info</i>\
                   </button>\
             </a>\
-            <div class='mdl-tooltip' for='" + "info-" + newNode.id + "'>\
+            <div class='mdl-tooltip' for='" + "info-" + node.id + "'>\
                   Documentation\
             </div>\
       ";
-      newNode.node.data.inputs.forEach(
+      node.node.data.inputs.forEach(
             (input) => {
                   color = dataTypes.find(x => x.dataType == input.dataTypes[0]).color;
                   main.innerHTML += "<div class='node-data' style='background-color:" + color + ";'></div>";
             }
       );
-      newNode.node.data.outputs.forEach(
+      node.node.data.outputs.forEach(
             (output) => {
                   color = dataTypes.find(x => x.dataType == output.dataTypes[0]).color;
                   main.innerHTML += "<div class='node-data' style='background-color:" + color + ";'></div>";
             }
       );
 
-      nodeList.push(newNode);
+      nodeList.push(node);
       document.querySelector("#editor").appendChild(main);
 }
 

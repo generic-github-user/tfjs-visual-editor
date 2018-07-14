@@ -31,13 +31,13 @@
             </ul>
 
             <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="add-menu-tensors">
-                  <li class="mdl-menu__item" onclick="addNode(nodes.tensors.tensor)">Tensor</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.tensors.scalar)">Scalar</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.tensors.tensor1d)">Tensor1D</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.tensors.tensor2d)">Tensor2D</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.tensors.tensor3d)">Tensor3D</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.tensors.tensor4d)">Tensor4D</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.tensors.tensor5d)">Tensor5D</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.tensors.tensor))">Tensor</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.tensors.scalar))">Scalar</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.tensors.tensor1d))">Tensor1D</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.tensors.tensor2d))">Tensor2D</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.tensors.tensor3d))">Tensor3D</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.tensors.tensor4d))">Tensor4D</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.tensors.tensor5d))">Tensor5D</li>
             </ul>
 
             <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="add-menu-layers">
@@ -91,44 +91,44 @@
             </ul>
 
             <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="add-menu-models">
-                  <li class="mdl-menu__item" onclick="addNode(nodes.models.sequential)">Sequential</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.models.model)">Model</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.models.input)">Input</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.models.loadModel)">Load Model</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.models.copyModel)">Copy Model</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.models.listModels)">List Models</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.models.moveModel)">Move Model</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.models.removeModel)">Remove Model</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.models.sequential))">Sequential</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.models.model))">Model</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.models.input))">Input</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.models.loadModel))">Load Model</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.models.copyModel))">Copy Model</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.models.listModels))">List Models</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.models.moveModel))">Move Model</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.models.removeModel))">Remove Model</li>
             </ul>
 
             <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="add-menu-training-gradients">
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.gradients.grad)">Grad</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.gradients.grads)">Grads</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.gradients.customGrad)">Custom Grad</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.gradients.valueAndGrad)">Value and Grad</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.gradients.valueAndGrads)">Value and Grads</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.gradients.variableGrads)">Variable Grads</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.gradients.grad))">Grad</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.gradients.grads))">Grads</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.gradients.customGrad))">Custom Grad</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.gradients.valueAndGrad))">Value and Grad</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.gradients.valueAndGrads))">Value and Grads</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.gradients.variableGrads))">Variable Grads</li>
             </ul>
 
             <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="add-menu-training-optimizers">
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.optimizers.sgd)">SGD</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.optimizers.model)">Momentum</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.optimizers.input)">Adagrad</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.optimizers.loadModel)">Adadelta</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.optimizers.copyModel)">Adam</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.optimizers.listModels)">Adamax</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.optimizers.listModels)">Rmsprop</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.optimizers.sgd))">SGD</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.optimizers.model))">Momentum</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.optimizers.input))">Adagrad</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.optimizers.loadModel))">Adadelta</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.optimizers.copyModel))">Adam</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.optimizers.listModels))">Adamax</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.optimizers.listModels))">Rmsprop</li>
             </ul>
 
             <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="add-menu-training-losses">
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.losses.model)">Absolute Difference</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.losses.input)">Compute Weighted Loss</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.losses.loadModel)">Cosine Distance</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.losses.copyModel)">Hinge Loss</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.losses.listModels)">Huber Loss</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.losses.listModels)">Log Loss</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.losses.listModels)">Mean Squared Error</li>
-                  <li class="mdl-menu__item" onclick="addNode(nodes.training.losses.listModels)">Softmax Cross Entropy</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.losses.model))">Absolute Difference</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.losses.input))">Compute Weighted Loss</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.losses.loadModel))">Cosine Distance</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.losses.copyModel))">Hinge Loss</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.losses.listModels))">Huber Loss</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.losses.listModels))">Log Loss</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.losses.listModels))">Mean Squared Error</li>
+                  <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.losses.listModels))">Softmax Cross Entropy</li>
             </ul>
             <div id="editor">
                   <h1 class="center" id="welcome">Welcome to TensorFlow.js Visual Editor!<br />Add some nodes to get started.</h1>
