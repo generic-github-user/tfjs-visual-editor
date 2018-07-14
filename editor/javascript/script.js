@@ -2,6 +2,14 @@ var nodeList = [
 
 ];
 
+function save() {
+      console.log("Saving editor data to browser localStorage . . .");
+      localStorage.setItem("tfjs-visual-editor", JSON.stringify(nodeList));
+      console.log("Editor data saved:");
+      console.log(nodeList);
+}
+
+const container = "editor";
 function update() {
       document.querySelector("#editor").innerHTML = "";
 
@@ -31,7 +39,7 @@ top: ' + node.display.position.y + 'px;\
 "';
 
 node.element = '\
-<div class="node" ' + style + ' id="' + node.id + '">\
+<div class="node" ' + style + ' id="' + node.id + '" onmousedown="mydragg.startMoving(this, container, event);" onmouseup="mydragg.stopMoving(container);">\
 <h4>' + node.node.title + '</h4>\
 ' + inputs + '\
 ' + outputs + '\
@@ -49,11 +57,6 @@ Documentation\
                   }
             }
       );
-
-      console.log("Saving editor data to browser localStorage . . .");
-      localStorage.setItem("tfjs-visual-editor", JSON.stringify(nodeList));
-      console.log("Editor data saved:");
-      console.log(nodeList);
 }
 
 function UUID() {
@@ -113,6 +116,7 @@ var color;
 function addNode(node) {
       nodeList.push(node);
       update();
+      save();
 }
 
 console.log("Main editor script loaded. (script.js)");
