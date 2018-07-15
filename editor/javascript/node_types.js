@@ -30,9 +30,7 @@ const nodes = {
                         "outputs": [
                               {
                                     "outputName": "Output",
-                                    "dataTypes": [
-                                          "tensor"
-                                    ]
+                                    "dataTypes": "tensor"
                               }
                         ]
                   },
@@ -61,13 +59,152 @@ const nodes = {
                         "outputs": [
                               {
                                     "outputName": "Output",
-                                    "dataTypes": [
-                                          "scalar"
-                                    ]
+                                    "dataType": "scalar"
                               }
                         ]
                   },
                   "info": "https://js.tensorflow.org/api/latest/index.html#scalar"
+            },
+            "tensor1d": {
+                  "title": "Tensor1D",
+                  "data": {
+                        "inputs": [
+                              {
+                                    "parameterName": "Values",
+                                    "dataTypes": [
+                                          "array"
+                                    ],
+                                    "optional": false
+                              },
+                              {
+                                    "parameterName": "Data type",
+                                    "dataTypes": [
+                                          "string"
+                                    ],
+                                    "optional": true
+                              }
+                        ],
+                        "outputs": [
+                              {
+                                    "outputName": "Output",
+                                    // Technically tensor1d
+                                    "dataType": "tensor"
+                              }
+                        ]
+                  },
+                  "info": "https://js.tensorflow.org/api/latest/index.html#tensor1d"
+            },
+            "tensor2d": {
+                  "title": "Tensor2D",
+                  "data": {
+                        "inputs": [
+                              {
+                                    "parameterName": "Values",
+                                    "dataTypes": [
+                                          "array"
+                                    ],
+                                    "optional": false
+                              },
+                              {
+                                    "parameterName": "Data type",
+                                    "dataTypes": [
+                                          "string"
+                                    ],
+                                    "optional": true
+                              }
+                        ],
+                        "outputs": [
+                              {
+                                    "outputName": "Output",
+                                    "dataType": "tensor"
+                              }
+                        ]
+                  },
+                  "info": "https://js.tensorflow.org/api/latest/index.html#tensor2d"
+            },
+            "tensor3d": {
+                  "title": "Tensor3D",
+                  "data": {
+                        "inputs": [
+                              {
+                                    "parameterName": "Values",
+                                    "dataTypes": [
+                                          "array"
+                                    ],
+                                    "optional": false
+                              },
+                              {
+                                    "parameterName": "Data type",
+                                    "dataTypes": [
+                                          "string"
+                                    ],
+                                    "optional": true
+                              }
+                        ],
+                        "outputs": [
+                              {
+                                    "outputName": "Output",
+                                    "dataType": "tensor"
+                              }
+                        ]
+                  },
+                  "info": "https://js.tensorflow.org/api/latest/index.html#tensor3d"
+            },
+            "tensor4d": {
+                  "title": "Tensor4D",
+                  "data": {
+                        "inputs": [
+                              {
+                                    "parameterName": "Values",
+                                    "dataTypes": [
+                                          "array"
+                                    ],
+                                    "optional": false
+                              },
+                              {
+                                    "parameterName": "Data type",
+                                    "dataTypes": [
+                                          "string"
+                                    ],
+                                    "optional": true
+                              }
+                        ],
+                        "outputs": [
+                              {
+                                    "outputName": "Output",
+                                    "dataType": "tensor"
+                              }
+                        ]
+                  },
+                  "info": "https://js.tensorflow.org/api/latest/index.html#tensor4d"
+            },
+            "tensor5d": {
+                  "title": "Tensor5D",
+                  "data": {
+                        "inputs": [
+                              {
+                                    "parameterName": "Values",
+                                    "dataTypes": [
+                                          "array"
+                                    ],
+                                    "optional": false
+                              },
+                              {
+                                    "parameterName": "Data type",
+                                    "dataTypes": [
+                                          "string"
+                                    ],
+                                    "optional": true
+                              }
+                        ],
+                        "outputs": [
+                              {
+                                    "outputName": "Output",
+                                    "dataType": "tensor"
+                              }
+                        ]
+                  },
+                  "info": "https://js.tensorflow.org/api/latest/index.html#tensor5d"
             }
       }
 }

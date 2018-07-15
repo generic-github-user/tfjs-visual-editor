@@ -83,7 +83,7 @@ function update() {
                               var outputs = "";
                               node.node.data.outputs.forEach(
                                     (output) => {
-                                          color = dataTypes.find(x => x.dataType == output.dataTypes[0]).color;
+                                          color = dataTypes.find(x => x.dataType == output.dataType).color;
                                           outputs += "<div class='node-data' style='background-color:" + color + ";'></div>";
                                     }
                               );
