@@ -1,8 +1,3 @@
-const canvas = document.querySelector("#canvas");
-const context = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
 var nodeList = [
 
 ];
@@ -54,14 +49,6 @@ function save() {
       console.log("Editor data saved:");
       console.log(nodeList);
 }
-function getLocation(element) {
-      var rect = element.getBoundingClientRect();
-      var location = {
-            "x": (rect.left + rect.right) / 2,
-            "y": (rect.top + rect.bottom) / 2
-      }
-      return location;
-}
 
 const container = "editor";
 const editor = document.querySelector("#editor");
@@ -85,18 +72,21 @@ function update() {
 
             nodeList.forEach(
                   function (node) {
-                        if (!document.getElementById(node.id)) {
+                        if (node && !document.getElementById(node.id)) {
                               var inputs = "";
-                              for (var i = 0; i < node.node.data.inputs.length; i ++) {
-                                    color = dataTypes.find(x => x.dataType == node.node.data.inputs[i].dataTypes[0]).color;
-                                    inputs += "<div class='node-data inputs-" + i + "' style='background-color:" + color + ";'></div>";
-                              }
-
+                              node.node.data.inputs.forEach(
+                                    (input) => {
+                                          color = dataTypes.find(x => x.dataType == input.dataTypes[0]).color;
+                                          inputs += "<div class='node-data' style='background-color:" + color + ";'></div>";
+                                    }
+                              );
                               var outputs = "";
-                              for (var i = 0; i < node.node.data.outputs.length; i ++) {
-                                    color = dataTypes.find(x => x.dataType == node.node.data.outputs[i].dataType).color;
-                                    outputs += "<div class='node-data outputs-" + i + "' style='background-color:" + color + ";'></div>";
-                              }
+                              node.node.data.outputs.forEach(
+                                    (output) => {
+                                          color = dataTypes.find(x => x.dataType == output.dataType).color;
+                                          outputs += "<div class='node-data' style='background-color:" + color + ";'></div>";
+                                    }
+                              );
 
 const style = 'style="\
 width: ' + node.display.dimensions.width + 'px; \
@@ -121,19 +111,7 @@ Documentation\
 </div>';
 
                               document.querySelector("#editor").innerHTML += node.element;
-                              document.querySelector("#editor").innerHTML += node.element;
                         }
-
-                        context.strokeStyle = "#FF0000";
-                        context.lineWidth = 5;
-
-                        const location1 = getLocation(document.getElementById(node.id).querySelector(".inputs-0"));
-                        const location2 = getLocation(document.getElementById(node.id).querySelector(".inputs-1"));
-
-                        context.beginPath();
-                        context.moveTo(location1.x, location1.y);
-                        context.lineTo(location2.x, location2.y);
-                        context.stroke();
                   }
             );
       }
