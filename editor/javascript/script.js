@@ -2,6 +2,22 @@ var nodeList = [
 
 ];
 
+const dialogs = {
+      "error": {
+            // "unsupported": {
+                  "node": document.querySelector("#dialog-error-unsupported-node")
+            // }
+      }
+}
+
+if (!dialogs.error.node.showModal) {
+      dialogPolyfill.registerDialog(dialog);
+}
+dialogs.error.node.querySelector(".close")
+.addEventListener("click", function() {
+      dialogs.error.node.close();
+});
+
 function save() {
       console.log("Saving editor data to browser localStorage . . .");
       localStorage.setItem("tfjs-visual-editor", JSON.stringify(nodeList));
@@ -15,7 +31,7 @@ function update() {
 
       nodeList.forEach(
             function (node) {
-                  if (!document.getElementById(node.id)) {
+                  if (node && !document.getElementById(node.id)) {
                         var inputs = "";
                         node.node.data.inputs.forEach(
                               (input) => {
@@ -79,8 +95,8 @@ if (savedData) {
 
 var newNode;
 function getNodeInfo(nodeType) {
-      if (!nodeType) {
-            console.error("Sorry, but this node is not currently supported. It will be soon!");
+      if (! nodeType) {
+            console.error("Error: Unsupported node.");
             return false;
       }
       else {
@@ -114,9 +130,14 @@ function getNodeInfo(nodeType) {
 
 var color;
 function addNode(node) {
-      nodeList.push(node);
-      update();
-      save();
+      if (!node) {
+            dialogs.error.node.showModal();
+      }
+      else {
+            nodeList.push(node);
+            update();
+            save();
+      }
 }
 
 console.log("Main editor script loaded. (script.js)");

@@ -36,6 +36,9 @@
       top: 50%;
       transform: translateY(-50%);
 }
+.error {
+      color: #D00;
+}
 
 #editor {
       width: 100vw;
