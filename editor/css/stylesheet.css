@@ -92,3 +92,6 @@
 #menu {
       margin: 2%;
 }
+#canvas {
+      pointer-events: none;
+}
