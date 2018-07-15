@@ -30,7 +30,7 @@ const nodes = {
                         "outputs": [
                               {
                                     "outputName": "Output",
-                                    "dataTypes": "tensor"
+                                    "dataType": "tensor"
                               }
                         ]
                   },
