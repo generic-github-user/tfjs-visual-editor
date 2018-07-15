@@ -7,17 +7,42 @@ const dialogs = {
             // "unsupported": {
                   "node": document.querySelector("#dialog-error-unsupported-node")
             // }
+      },
+      "warning": {
+            // "delete": {
+                  "all": document.querySelector("#dialog-warning-delete-all")
+            // }
       }
 }
 
-if (!dialogs.error.node.showModal) {
-      dialogPolyfill.registerDialog(dialog);
-}
+// if (!dialogs.error.node.showModal) {
+//       dialogPolyfill.registerDialog(dialog);
+// }
 dialogs.error.node.querySelector(".close")
 .addEventListener("click", function() {
       dialogs.error.node.close();
 });
 
+// if (!dialogs.warning.all.showModal) {
+//       dialogPolyfill.registerDialog(dialog);
+// }
+dialogs.warning.all.querySelector(".confirm")
+.addEventListener("click", function() {
+      deleteAll();
+      dialogs.warning.all.close();
+});
+dialogs.warning.all.querySelector(".close")
+.addEventListener("click", function() {
+      dialogs.warning.all.close();
+});
+
+function deleteAll() {
+      console.log("Deleting all nodes...");
+      nodeList = [];
+      update();
+      save();
+      console.log("All nodes deleted.");
+}
 function save() {
       console.log("Saving editor data to browser localStorage . . .");
       localStorage.setItem("tfjs-visual-editor", JSON.stringify(nodeList));
@@ -30,11 +55,19 @@ const editor = document.querySelector("#editor");
 const welcome = '<h1 class="center" id="welcome">Welcome to TensorFlow.js Visual Editor!<br />Add some nodes to get started.</h1>';
 function update() {
       if (nodeList.length == 0) {
-            editor.innerHTML = welcome;
+            if (!editor.querySelector("#welcome")) {
+                  editor.innerHTML = welcome;
+            }
+            if (!document.querySelector("#delete-all").disabled) {
+                  document.querySelector("#delete-all").disabled = true;
+            }
       }
       else {
-            if (document.querySelector("#welcome")) {
+            if (editor.querySelector("#welcome")) {
                   editor.innerHTML = "";
+            }
+            if (document.querySelector("#delete-all").disabled) {
+                  document.querySelector("#delete-all").disabled = false;
             }
 
             nodeList.forEach(
@@ -55,27 +88,27 @@ function update() {
                                     }
                               );
 
-      const style = 'style="\
-      width: ' + node.display.dimensions.width + 'px; \
-      height: ' + node.display.dimensions.height + 'px; \
-      left: ' + node.display.position.x + 'px; \
-      top: ' + node.display.position.y + 'px;\
-      "';
+const style = 'style="\
+width: ' + node.display.dimensions.width + 'px; \
+height: ' + node.display.dimensions.height + 'px; \
+left: ' + node.display.position.x + 'px; \
+top: ' + node.display.position.y + 'px;\
+"';
 
-      node.element = '\
-      <div class="node" ' + style + ' id="' + node.id + '" onmousedown="mydragg.startMoving(this, container, event);" onmouseup="mydragg.stopMoving(container);">\
-      <h4>' + node.node.title + '</h4>\
-      ' + inputs + '\
-      ' + outputs + '\
-      <a href="' + node.node.info + '" target="_blank" class="mdl-card__menu" id="' + 'info-' + node.id + '">\
-      <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-js-ripple-effect">\
-      <i class="material-icons">info</i>\
-      </button>\
-      </a>\
-      <div class="mdl-tooltip" for="' + 'info-' + node.id + '">\
-      Documentation\
-      </div>\
-      </div>';
+node.element = '\
+<div class="node" ' + style + ' id="' + node.id + '" onmousedown="mydragg.startMoving(this, container, event);" onmouseup="mydragg.stopMoving(container);">\
+<h4>' + node.node.title + '</h4>\
+' + inputs + '\
+' + outputs + '\
+<a href="' + node.node.info + '" target="_blank" class="mdl-card__menu" id="' + 'info-' + node.id + '">\
+<button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-js-ripple-effect">\
+<i class="material-icons">info</i>\
+</button>\
+</a>\
+<div class="mdl-tooltip" for="' + 'info-' + node.id + '">\
+Documentation\
+</div>\
+</div>';
 
                               document.querySelector("#editor").innerHTML += node.element;
                         }

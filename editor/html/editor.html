@@ -10,11 +10,20 @@
             <link rel="stylesheet" href=".././css/stylesheet.css" />
       </head>
       <body>
-            <button id="add-menu" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-js-ripple-effect z-1">
-                  <i class="material-icons">add</i>
-            </button>
-            <div class="mdl-tooltip" for="add-menu">
-                  Add Nodes
+            <div class="z-1" id="menu">
+                  <button id="add-menu" class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect mdl-button--raised button">
+                        <i class="material-icons">add</i>
+                  </button>
+                  <div class="mdl-tooltip" for="add-menu">
+                        Add nodes
+                  </div>
+
+                  <button id="delete-all" class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect mdl-button--raised button" onclick="dialogs.warning.all.showModal();">
+                        <i class="material-icons">delete_forever</i>
+                  </button>
+                  <div class="mdl-tooltip" for="delete-all">
+                        Delete all nodes
+                  </div>
             </div>
 
             <ul class="mdl-menu menu--bottom-left mdl-js-menu mdl-js-ripple-effect z-1" for="add-menu">
@@ -127,7 +136,7 @@
                   <li class="mdl-menu__item" onclick="addNode(getNodeInfo(nodes.training.losses.listModels))">Softmax Cross Entropy</li>
             </ul>
             <div id="editor">
-                  
+
             </div>
             <div id="taskbar">
 
@@ -142,6 +151,19 @@
                   </div>
                   <div class="mdl-dialog__actions">
                         <button type="button" class="mdl-button close">OK</button>
+                  </div>
+            </dialog>
+
+            <dialog class="mdl-dialog" id="dialog-warning-delete-all">
+                  <h4 class="mdl-dialog__title">Delete Nodes</h4>
+                  <div class="mdl-dialog__content">
+                        <p>
+                              Delete all nodes? This cannot be undone.
+                        </p>
+                  </div>
+                  <div class="mdl-dialog__actions">
+                        <button type="button" class="mdl-button close">Cancel</button>
+                        <button type="button" class="mdl-button confirm warning">Delete</button>
                   </div>
             </dialog>
 

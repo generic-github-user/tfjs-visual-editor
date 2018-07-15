@@ -39,6 +39,13 @@
 .error {
       color: #D00;
 }
+.warning {
+      color: #F00;
+}
+.button {
+      margin-right: 1vw;
+      /* box-shadow: 5px 5px 10px 0px gray; */
+}
 
 #editor {
       width: 100vw;
@@ -70,11 +77,6 @@
       50% { box-shadow: 60px -7px 25px 15px grey; }
       100% { box-shadow: 50px -5px 25px 15px grey; }
 } */
-#add-menu {
-      margin: 2%;
-
-      box-shadow: 5px 5px 10px 0px gray;
-}
 #welcome {
       margin: 0;
 
@@ -86,4 +88,7 @@
       color: #CCC;
       text-shadow: 10px 10px 10px gray;
       transition: color 10s ease, text-shadow 0.5s ease;
+}
+#menu {
+      margin: 2%;
 }
