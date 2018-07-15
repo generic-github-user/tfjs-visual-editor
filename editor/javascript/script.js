@@ -26,53 +26,62 @@ function save() {
 }
 
 const container = "editor";
+const editor = document.querySelector("#editor");
+const welcome = '<h1 class="center" id="welcome">Welcome to TensorFlow.js Visual Editor!<br />Add some nodes to get started.</h1>';
 function update() {
-      document.querySelector("#editor").innerHTML = "";
-
-      nodeList.forEach(
-            function (node) {
-                  if (node && !document.getElementById(node.id)) {
-                        var inputs = "";
-                        node.node.data.inputs.forEach(
-                              (input) => {
-                                    color = dataTypes.find(x => x.dataType == input.dataTypes[0]).color;
-                                    inputs += "<div class='node-data' style='background-color:" + color + ";'></div>";
-                              }
-                        );
-                        var outputs = "";
-                        node.node.data.outputs.forEach(
-                              (output) => {
-                                    color = dataTypes.find(x => x.dataType == output.dataTypes[0]).color;
-                                    outputs += "<div class='node-data' style='background-color:" + color + ";'></div>";
-                              }
-                        );
-
-const style = 'style="\
-width: ' + node.display.dimensions.width + 'px; \
-height: ' + node.display.dimensions.height + 'px; \
-left: ' + node.display.position.x + 'px; \
-top: ' + node.display.position.y + 'px;\
-"';
-
-node.element = '\
-<div class="node" ' + style + ' id="' + node.id + '" onmousedown="mydragg.startMoving(this, container, event);" onmouseup="mydragg.stopMoving(container);">\
-<h4>' + node.node.title + '</h4>\
-' + inputs + '\
-' + outputs + '\
-<a href="' + node.node.info + '" target="_blank" class="mdl-card__menu" id="' + 'info-' + node.id + '">\
-<button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-js-ripple-effect">\
-<i class="material-icons">info</i>\
-</button>\
-</a>\
-<div class="mdl-tooltip" for="' + 'info-' + node.id + '">\
-Documentation\
-</div>\
-</div>';
-
-                        document.querySelector("#editor").innerHTML += node.element;
-                  }
+      if (nodeList.length == 0) {
+            editor.innerHTML = welcome;
+      }
+      else {
+            if (document.querySelector("#welcome")) {
+                  editor.innerHTML = "";
             }
-      );
+
+            nodeList.forEach(
+                  function (node) {
+                        if (node && !document.getElementById(node.id)) {
+                              var inputs = "";
+                              node.node.data.inputs.forEach(
+                                    (input) => {
+                                          color = dataTypes.find(x => x.dataType == input.dataTypes[0]).color;
+                                          inputs += "<div class='node-data' style='background-color:" + color + ";'></div>";
+                                    }
+                              );
+                              var outputs = "";
+                              node.node.data.outputs.forEach(
+                                    (output) => {
+                                          color = dataTypes.find(x => x.dataType == output.dataTypes[0]).color;
+                                          outputs += "<div class='node-data' style='background-color:" + color + ";'></div>";
+                                    }
+                              );
+
+      const style = 'style="\
+      width: ' + node.display.dimensions.width + 'px; \
+      height: ' + node.display.dimensions.height + 'px; \
+      left: ' + node.display.position.x + 'px; \
+      top: ' + node.display.position.y + 'px;\
+      "';
+
+      node.element = '\
+      <div class="node" ' + style + ' id="' + node.id + '" onmousedown="mydragg.startMoving(this, container, event);" onmouseup="mydragg.stopMoving(container);">\
+      <h4>' + node.node.title + '</h4>\
+      ' + inputs + '\
+      ' + outputs + '\
+      <a href="' + node.node.info + '" target="_blank" class="mdl-card__menu" id="' + 'info-' + node.id + '">\
+      <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored mdl-js-ripple-effect">\
+      <i class="material-icons">info</i>\
+      </button>\
+      </a>\
+      <div class="mdl-tooltip" for="' + 'info-' + node.id + '">\
+      Documentation\
+      </div>\
+      </div>';
+
+                              document.querySelector("#editor").innerHTML += node.element;
+                        }
+                  }
+            );
+      }
 }
 
 function UUID() {
