@@ -6,6 +6,10 @@
       z-index: 1;
       position: absolute;
 }
+.z-2 {
+      z-index: 2;
+      position: absolute;
+}
 .node {
       position: absolute;
 
@@ -91,4 +95,7 @@
 }
 #menu {
       margin: 2%;
+}
+#svg {
+      pointer-events: none;
 }

@@ -8,6 +8,8 @@ var mydragg = function(){
        move : function(divid,xpos,ypos){
            divid.style.left = xpos + 'px';
            divid.style.top = ypos + 'px';
+
+           updateConnections();
        },
        startMoving : function(divid,container,evt){
            evt = evt || window.event;

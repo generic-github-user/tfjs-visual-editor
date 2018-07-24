@@ -1,3 +1,16 @@
+const svg = document.querySelector("#svg");
+svg.setAttribute("width", window.innerWidth);
+svg.setAttribute("height", window.innerHeight);
+
+const selection = {
+      "nodes": [
+
+      ],
+      "connections": [
+
+      ]
+}
+
 var nodeList = [
 
 ];
@@ -36,6 +49,7 @@ dialogs.warning.all.querySelector(".close")
       dialogs.warning.all.close();
 });
 
+// Delete all nodes
 function deleteAll() {
       console.log("Deleting all nodes...");
       nodeList = [];
@@ -48,6 +62,29 @@ function save() {
       localStorage.setItem("tfjs-visual-editor", JSON.stringify(nodeList));
       console.log("Editor data saved:");
       console.log(nodeList);
+}
+var rect;
+var position;
+function getPosition(element) {
+      rect = element.getBoundingClientRect();
+      position = {
+            "x": (rect.left + rect.right) / 2,
+            "y": (rect.top + rect.bottom) / 2
+      }
+      return position;
+}
+// The connections must be updated if the starting or ending node moves
+function updateConnections() {
+      for (var i = 0; i < nodeList.length; i ++) {
+            for (var j = 0; j < nodeList[i].dataSources.length; j ++) {
+                  const path = svg.querySelector("#connection-" + nodeList[i].id + "-" + j);
+                  const startNode = document.getElementById(/*nodeList[i].dataSources[j].node.id*/nodeList[0].id);
+                  const endNode = document.getElementById(nodeList[1].id);
+                  const startPosition = getPosition(startNode.querySelector(".outputs-" + /*nodeList[i].dataSources[j].output*/"0"));
+                  const endPosition = getPosition(endNode.querySelector(".inputs-0"));
+                  path.setAttributeNS(null, "d", 'M ' + startPosition.x + ' ' + startPosition.y + ' C 20 20, 40 20, ' + endPosition.x + ' ' + endPosition.y);
+            }
+      }
 }
 
 const container = "editor";
@@ -72,21 +109,17 @@ function update() {
 
             nodeList.forEach(
                   function (node) {
-                        if (node && !document.getElementById(node.id)) {
+                        if (!document.getElementById(node.id)) {
                               var inputs = "";
-                              node.node.data.inputs.forEach(
-                                    (input) => {
-                                          color = dataTypes.find(x => x.dataType == input.dataTypes[0]).color;
-                                          inputs += "<div class='node-data' style='background-color:" + color + ";'></div>";
-                                    }
-                              );
+                              for (var i = 0; i < node.node.data.inputs.length; i ++) {
+                                    color = dataTypes.find(x => x.dataType == node.node.data.inputs[i].dataTypes[0]).color;
+                                    inputs += "<div class='node-data inputs-" + i + "' style='background-color:" + color + ";'></div>";
+                              }
                               var outputs = "";
-                              node.node.data.outputs.forEach(
-                                    (output) => {
-                                          color = dataTypes.find(x => x.dataType == output.dataType).color;
-                                          outputs += "<div class='node-data' style='background-color:" + color + ";'></div>";
-                                    }
-                              );
+                              for (var i = 0; i < node.node.data.outputs.length; i ++) {
+                                    color = dataTypes.find(x => x.dataType == node.node.data.outputs[i].dataType).color;
+                                    outputs += "<div class='node-data outputs-" + i + "' style='background-color:" + color + ";'></div>";
+                              }
 
 const style = 'style="\
 width: ' + node.display.dimensions.width + 'px; \
@@ -112,8 +145,28 @@ Documentation\
 
                               document.querySelector("#editor").innerHTML += node.element;
                         }
+
+
                   }
             );
+            nodeList.forEach(
+                  function (node) {
+                        for (var i = 0; i < node.dataSources.length; i ++) {
+                              const id = "connection-" + node.id + "-" + i;
+                              if (!document.getElementById(id)) {
+                                    // const path = document.createElementNS("http://www.w3.org/1999/xhtml", "path");
+                                    // path.setAttributeNS(null, "id", "connection-" + node.id + "-" + i);
+                                    // path.setAttributeNS(null, "stroke", "black");
+                                    // path.setAttributeNS(null, "stroke-width", "5");
+                                    // path.setAttributeNS(null, "fill", "transparent");
+                                    // path.setAttributeNS(null, "d", "");
+                                    // svg.appendChild(path);
+                                    svg.innerHTML += '<path id="' + id + '" stroke="black" stroke-width="5" fill="transparent"></path>';
+                              }
+                        };
+                  }
+            );
+            updateConnections();
       }
 }
 
@@ -137,7 +190,7 @@ if (savedData) {
 
 var newNode;
 function getNodeInfo(nodeType) {
-      if (! nodeType) {
+      if (!nodeType) {
             console.error("Error: Unsupported node.");
             return false;
       }
@@ -146,7 +199,12 @@ function getNodeInfo(nodeType) {
                   "node": nodeType,
                   "name": "",
                   "description": "",
-                  "dataSources": [],
+                  "dataSources": [
+                        {
+                              "node": null,
+                              "output": 1
+                        }
+                  ],
                   "id": UUID(),
                   "display": {
                         "position": {
