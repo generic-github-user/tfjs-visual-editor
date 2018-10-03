@@ -31,4 +31,5 @@ const dataTypes = [
       }
 ];
 
-console.log("Data types loaded. (data_types.js)");
+var today = new Date();
+console.log(today.toLocaleString('en-US') + ": Data types loaded. (data_types.js)");
