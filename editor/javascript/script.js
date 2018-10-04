@@ -51,17 +51,19 @@ dialogs.warning.all.querySelector(".close")
 
 // Delete all nodes
 function deleteAll() {
-      console.log("Deleting all nodes...");
+	  var today = new Date();
+      console.log(today.toLocaleString('en-US') + ": Deleting all nodes...");
       nodeList = [];
       update();
       save();
-      console.log("All nodes deleted.");
+      console.log(today.toLocaleString('en-US') + ": All nodes deleted.");
 }
 function save() {
-      console.log("Saving editor data to browser localStorage . . .");
+	  var today = new Date();
+      console.log(today.toLocaleString('en-US') + ": Saving editor data to browser localStorage . . .");
       localStorage.setItem("tfjs-visual-editor", JSON.stringify(nodeList));
-      console.log("Editor data saved:");
-      console.log(nodeList);
+      console.log(today.toLocaleString('en-US') + ": Editor data saved:");
+      console.log(today.toLocaleString('en-US') + ": " + nodeList);
 }
 var rect;
 var position;
@@ -240,4 +242,5 @@ function addNode(node) {
       }
 }
 
-console.log("Main editor script loaded. (script.js)");
+var today = new Date();
+console.log(today.toLocaleString('en-US') + ": Main editor script loaded. (script.js)");

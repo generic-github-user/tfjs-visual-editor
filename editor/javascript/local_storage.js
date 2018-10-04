@@ -70,4 +70,5 @@ if (!window.localStorage) {
   })());
 }
 
-console.log("Web browser localStorage fallback script loaded. (local_storage.js)");
+var today = new Date();
+console.log(today.toLocaleString('en-US') + ": Web browser localStorage fallback script loaded. (local_storage.js)");

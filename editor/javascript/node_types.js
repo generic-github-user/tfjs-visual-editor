@@ -208,5 +208,5 @@ const nodes = {
             }
       }
 }
-
-console.log("Node types loaded. (node_types.js)");
+var today = new Date();
+console.log(today.toLocaleString('en-US') + ": Node types loaded. (node_types.js)");
